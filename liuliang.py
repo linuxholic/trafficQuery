@@ -26,6 +26,7 @@ params = {
 
 def get_captchaid():
 	print "retrieving the captcha image ..."
+	print
 	request=urllib2.Request(loginurl)
 	response=urllib2.urlopen(request)
 	html=response.read()
@@ -35,13 +36,13 @@ def get_captchaid():
 		res=urllib.urlretrieve('http://ssqzfw.xidian.edu.cn' + url, 'vc.jpg')
 		vcv=re.search('<input type="hidden" name="vcv" value="(.+?)"' ,html)
 		if vcv:
-			sys.stdout.write("now you can input the captcha: ")
-			sys.stdout.flush()
-			time.sleep(1)
-			pwd = '000000'
-			cmd = 'fbi -T 2 -a vc.jpg 2> /dev/null'
-			subprocess.call("echo %s | sudo -S %s" % (pwd, cmd), shell=True)
-			vcode = raw_input()
+			#time.sleep(1)
+			#pwd = '000000'
+			#cmd = 'fbi -T 2 -a vc.jpg 2> /dev/null'
+			#subprocess.call("echo %s | sudo -S %s" % (pwd, cmd), shell=True)
+			subprocess.call(['tiv','-w','80', 'vc.jpg'])
+			print
+			vcode = raw_input('Now you need to input the above captcha: ')
 			params["vcode"] = vcode
 			params["vcv"] = vcv.group(1)
 		else:
