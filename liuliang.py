@@ -5,6 +5,8 @@ import urllib2
 import cookielib
 import subprocess
 import sys
+from PIL import Image
+from pytesser import *
 
 # hardcode some urls
 login_captcha = 'http://ssqzfw.xidian.edu.cn/modules/swyh/login.jsp'
@@ -32,11 +34,13 @@ def show_captcha():
 	subprocess.call(['tiv','-w','80', 'vc.jpg']) 
 	print
 
+
 # add form data for POST
 def fill_params(html):
 	vcv=re.search('<input type="hidden" name="vcv" value="(.+?)"' ,html)
 	if vcv:
-		vcode = raw_input('Now you need to input the above captcha: ')
+		#vcode = raw_input('Now you need to input the above captcha: ')
+		vcode = image_file_to_string('vc.jpg')
 		params["vcode"] = vcode
 		params["vcv"] = vcv.group(1)
 	else:
@@ -71,5 +75,6 @@ def netFlow():
 			print
 	else:
 		print 'login failed! Resulting url: ' + response.geturl()
+		netFlow()
 
 netFlow()
