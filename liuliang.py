@@ -5,6 +5,7 @@ import urllib2
 import cookielib
 import subprocess
 import sys
+import time
 from PIL import Image
 from pytesser import *
 
@@ -75,6 +76,7 @@ def netFlow():
 			print
 	else:
 		print 'login failed! Resulting url: ' + response.geturl()
+		time.sleep(1)
 		netFlow()
 
 netFlow()
