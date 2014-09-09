@@ -1,0 +1,6 @@
+模块pytesser使用了google的OCR引擎tesseract，所以需要在系统中安装单独的tesseract程序，以供pytesser调用。
+
+README: https://code.google.com/p/tesseract-ocr/wiki/ReadMe
+	tesseract:	https://code.google.com/p/tesseract-ocr/downloads/detail?name=tesseract-ocr-3.02.02.tar.gz&can=2&q=
+	tesseract语言包:	https://code.google.com/p/tesseract-ocr/downloads/detail?name=tesseract-ocr-3.02.eng.tar.gz&can=2&q=
+COMPILING: https://code.google.com/p/tesseract-ocr/wiki/Compiling
